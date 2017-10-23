@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # Devise
 gem 'devise'
 
+# Bootstrap
+gem 'bootstrap', '~> 4.0.0.beta2'
+
 group :development, :test do
   # Rspec
   gem 'rspec-rails', '~> 3.6'
