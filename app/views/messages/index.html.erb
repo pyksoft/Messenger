@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <section class="header_message">
   <a href="<%= conversations_path %>">
     <div class="header_message_row d-flex justify-content-left">
@@ -18,7 +16,7 @@
   </a>
 </section>
 
-<section class="messages">
+<section class="messages" id="messages">
   <% @messages.each do |message| %>
     
       <% if message.sender == current_user %>
@@ -43,17 +41,14 @@
   <% end %>
 </section>
 
-<!-- <footer class="footer write_message">
-  <div class="write_message_content">
-    <textarea></textarea>
-  </div>
-</section> -->
-
-
-<footer class="footer">
-  <!-- <div class="container"> -->
-    <!-- <span class="text-muted">Place sticky footer content here.</span> -->
+<footer class="footer" id="footer">
     <%= render 'form', message: @new_message %>
-  <!-- </div> -->
 </footer>
 <%#= link_to 'New Message', new_conversation_message_path %>
+
+<script>
+    // Scroll to bottom on page load
+    setTimeout(function () {
+      window.scrollTo(0,document.body.scrollHeight);
+    }, 2);
+</script>

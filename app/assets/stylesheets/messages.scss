@@ -1,3 +1,83 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+section.header_message {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #2F80ED;
+  height: 75px;
+
+  div.header_message_row {
+    div.header_message_title, div.header_message_back {
+      font-size: 24px;
+      color: #F2F2F2;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+section.messages {
+  margin-top: 10px !important;
+  padding-bottom: 80px !important;
+
+  div.message {
+    margin-bottom: 10px !important;
+    padding: 10px !important;
+
+    div.message_sender {
+      p {
+        font-size: 14px;
+        color: #333333;
+      }
+    }
+    div.message_content {
+      background: #56CCF2;
+      border-radius: 15px;
+      p {
+        font-size: 18px;
+        color: #F2F2F2;
+      }
+    }
+    div.message_by_current_user {
+      background: #6FCF97;
+    }
+  }
+}
+
+footer.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #F2F2F2;
+
+  form {
+    div.text_area_field {
+      width: 100%;
+
+      textarea {
+        width: 100%;
+        height: 50px;
+        resize: none;
+        border: 0;
+        background: #F2F2F2;
+        outline: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+
+    div.actions {
+      input[type=submit] {
+        height: 50px;
+        width: 87px;
+      }
+    }
+  }
+}

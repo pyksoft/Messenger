@@ -1,2 +1,9 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "./conversations";
+@import "./messages";
+
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+}
