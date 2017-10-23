@@ -39,6 +39,9 @@ gem 'devise'
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0.beta2'
 
+# Emoji
+gem 'gemoji'
+
 group :development, :test do
   # Rspec
   gem 'rspec-rails', '~> 3.6'

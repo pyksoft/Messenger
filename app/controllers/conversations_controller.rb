@@ -6,7 +6,7 @@ class ConversationsController < ApplicationController
   # GET /conversations.json
   def index
     as1 = Conversation.where(user1: current_user)
-    as2 = Conversation.where(user2: current_user)    
+    as2 = Conversation.where(user2: current_user)
     # @conversations = Conversation.all
     @conversations = as1 | as2
   end

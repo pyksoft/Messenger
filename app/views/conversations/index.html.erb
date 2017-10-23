@@ -1,29 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Conversations</h1>
+<section class="header">
+  <div class="header_row d-flex justify-content-center">
+    <div class="header_title p-2">
+      <h1>WhomsApp Conversations</h1>
+    </div>
+    <div class="header_button p-2">
+      <%= link_to image_tag(asset_path('new_conversation_button.png'), width: 35), new_conversation_path %>
+    </div>
+  </div>
+</section>
 
-<table>
-  <thead>
-    <tr>
-      <th>User1</th>
-      <th>User2</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @conversations.each do |conversation| %>
-      <tr>
-        <td><%= conversation.user1.email %></td>
-        <td><%= conversation.user2.email %></td>
-        <td><%= link_to 'Show', conversation_messages_path(conversation) %></td>
-        <!-- <td><%#= link_to 'Edit', edit_conversation_path(conversation) %></td>
-        <td><%#= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Conversation', new_conversation_path %>
+<section class="conversations">
+  <% @conversations.each do |conversation| %>
+  <a href="<%= conversation_messages_path(conversation) %>">
+    <div class="conversation_row d-flex flex-row justify-content-between">
+      <div class="conversation p-2">
+        <% if conversation.user2 == current_user %>
+        <h2><%= conversation.user1.name %></h2>
+        <% else %>
+        <h2><%= conversation.user2.name %></h2>
+        <% end %>
+      </div>
+      <div class="conversation_arrow p-2">
+        <h2>></h2>
+      </div>
+    </div>
+  </a>
+  <% end %>
+</section>
