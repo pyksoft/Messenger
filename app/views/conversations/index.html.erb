@@ -15,9 +15,9 @@
     <div class="conversation_row d-flex justify-content-between">
       <div class="conversation p-2">
         <% if conversation.user2 == current_user %>
-        <h2><%= conversation.user1.name %></h2>
+        <h2><%= conversation.user1.profile.name %></h2>
         <% else %>
-        <h2><%= conversation.user2.name %></h2>
+        <h2><%= conversation.user2.profile.name %></h2>
         <% end %>
       </div>
       <div class="conversation_arrow p-2">

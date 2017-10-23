@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :user2_id %>
-    <%= form.collection_select :user2_id, User.where.not(id: current_user.id), :id, :email, id: :conversation_user2_id %>
+    <%= form.collection_select :user2_id, User.where.not(id: current_user.id), :id, :profile_name, id: :conversation_user2_id %>
   </div>
 
   <div class="actions">

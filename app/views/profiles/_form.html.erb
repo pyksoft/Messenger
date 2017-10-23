@@ -1,0 +1,22 @@
+<%= form_with(model: profile, local: true, class: "d-flex") do |form| %>
+<% if profile.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(profile.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+    <ul>
+    <% profile.errors.full_messages.each do |profile| %>
+      <li><%= profile %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%= form.label :name %>
+  <%= form.text_field :name, id: :profile_name %>
+</div>
+
+<div class="actions p-2">
+  <%= form.submit %>
+</div>
+<% end %>

@@ -7,9 +7,9 @@
       <div class="header_message_title p-2">
         
         <% if @conversation.user2 == current_user %>
-        <h1><%= @conversation.user1.name %></h1>
+        <h1><%= @conversation.user1.profile.name %></h1>
         <% else %>
-        <h1><%= @conversation.user2.name %></h1>
+        <h1><%= @conversation.user2.profile.name %></h1>
         <% end %>
       </div>
     </div>
@@ -22,7 +22,7 @@
       <% if message.sender == current_user %>
       <div class="message d-flex flex-row justify-content-start align-items-stretch">
         <div class="message_sender p-2">
-          <p><%= message.sender.name %></p>
+          <p><%= message.sender.profile.name %></p>
         </div>
         <div class="message_content message_by_current_user p-2">
           <p><%= simple_format(parse_emoji(message.content)) %></p>
@@ -34,7 +34,7 @@
           <p><%= simple_format(parse_emoji(message.content)) %></p>
         </div>
         <div class="message_sender p-2">
-          <p><%= message.sender.name %></p>
+          <p><%= message.sender.profile.name %></p>
         </div>
       </div>
       <% end %>
