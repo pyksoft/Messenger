@@ -1,0 +1,14 @@
+<a href="<%= conversation_messages_path(conversation) %>">
+  <div class="conversation_row d-flex justify-content-between">
+    <div class="conversation p-2">
+      <% if conversation.user2 == current_user %>
+      <h2><%= conversation.user1.profile.name %></h2>
+      <% else %>
+      <h2><%= conversation.user2.profile.name %></h2>
+      <% end %>
+    </div>
+    <div class="conversation_arrow p-2">
+      <h2>></h2>
+    </div>
+  </div>
+</a>
