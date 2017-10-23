@@ -24,11 +24,11 @@ section.header_message {
 
 section.messages {
   margin-top: 10px !important;
+  padding-top: 75px !important;
   padding-bottom: 80px !important;
 
   div.message {
     margin-bottom: 10px !important;
-    padding: 10px !important;
 
     div.message_sender {
       p {
@@ -37,6 +37,7 @@ section.messages {
       }
     }
     div.message_content {
+      padding: 10px !important;
       background: #56CCF2;
       border-radius: 15px;
       p {

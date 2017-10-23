@@ -5,6 +5,10 @@
 - email
 - password
 
+## Profile
+- name
+- user: references(User)
+
 ### Conversation
 - user1:references (User)
 - user2:references (User)

@@ -8,7 +8,8 @@ class MessagesController < ApplicationController
   def index
     # @messages = Message.all
     @messages = Message.where(conversation: @conversation)
-    @new_message = Message.new
+    p @messages.inspect
+    @message = Message.new
   end
 
   # GET /messages/1
@@ -28,6 +29,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+    puts "Creating a new message"
     @message = Message.new(message_params)
     @message.conversation = @conversation
     @message.sender = current_user

@@ -35,13 +35,31 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new(conversation_params)
     @conversation.user1 = current_user
 
+    # Find duplicate scenario 1 (user1 is current user, user2 is receiver)
+    existing_conversation = Conversation.find_by(user1: @conversation.user1, user2: @conversation.user2)
     respond_to do |format|
-      if @conversation.save
-        format.html { redirect_to conversations_url, notice: 'Conversation was successfully created.' }
-        format.json { render :show, status: :created, location: @conversation }
-      else
-        format.html { render :new }
-        format.json { render json: @conversation.errors, status: :unprocessable_entity }
+      format.html { redirect_to conversation_messages_url(conversation_id: existing_conversation.id) unless existing_conversation.nil? }
+    end
+    
+    if existing_conversation.nil?
+      # Find duplicate scenario 2 (user2 is current user, user1 is receiver)
+      existing_conversation = Conversation.find_by(user1: @conversation.user2, user2: @conversation.user1)
+      respond_to do |format|
+        format.html { redirect_to conversation_messages_url(conversation_id: existing_conversation.id) unless existing_conversation.nil? }
+      end
+    end
+
+    # Proceed to create conversation
+    if existing_conversation.nil?
+      respond_to do |format|
+        if @conversation.save
+          format.html { redirect_to conversation_messages_url(conversation_id: @conversation.id) }
+          # format.html { redirect_to conversations_url, notice: 'Conversation was successfully created.' }
+          format.json { render :show, status: :created, location: @conversation }
+        else
+          format.html { render :new }
+          format.json { render json: @conversation.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
