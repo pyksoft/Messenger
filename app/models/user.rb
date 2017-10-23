@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
   has_one :profile
 
+  scope :ordered_by_profile_name, -> { joins(:profile).order("profiles.name DESC") }
+
   def profile_name
     self.profile.name
   end

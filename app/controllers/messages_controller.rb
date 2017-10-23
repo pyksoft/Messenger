@@ -8,7 +8,6 @@ class MessagesController < ApplicationController
   def index
     # @messages = Message.all
     @messages = Message.where(conversation: @conversation)
-    p @messages.inspect
     @message = Message.new
   end
 

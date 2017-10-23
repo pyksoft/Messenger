@@ -35,18 +35,12 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new(conversation_params)
     @conversation.user1 = current_user
 
-    # Find duplicate scenario 1 (user1 is current user, user2 is receiver)
-    existing_conversation = Conversation.find_by(user1: @conversation.user1, user2: @conversation.user2)
+    # Find duplicate conversations
+    existing_conversation = Conversation.where(user1: @conversation.user1, user2: @conversation.user2)
+      .or(Conversation.where(user1: @conversation.user2, user2: @conversation.user1)).first
+
     respond_to do |format|
       format.html { redirect_to conversation_messages_url(conversation_id: existing_conversation.id) unless existing_conversation.nil? }
-    end
-    
-    if existing_conversation.nil?
-      # Find duplicate scenario 2 (user2 is current user, user1 is receiver)
-      existing_conversation = Conversation.find_by(user1: @conversation.user2, user2: @conversation.user1)
-      respond_to do |format|
-        format.html { redirect_to conversation_messages_url(conversation_id: existing_conversation.id) unless existing_conversation.nil? }
-      end
     end
 
     # Proceed to create conversation
