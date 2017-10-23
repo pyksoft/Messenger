@@ -28,23 +28,27 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    puts "Creating a new message"
     @message = Message.new(message_params)
     @message.conversation = @conversation
     @message.sender = current_user
 
-    respond_to do |format|
+    # respond_to do |format|
       if @message.save
         # format.html { redirect_to @message, notice: 'Message was successfully created.' }
         # format.html { redirect_to conversation_messages_url(@conversation), notice: 'Message was successfully created.' }
-        format.html {
-          redirect_to conversation_messages_url(@conversation)
-        }
-        format.json { render :show, status: :created, location: @message }
-      else
-        format.html { render :new }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+        
+        # format.html {
+        #   redirect_to conversation_messages_url(@conversation)
+        # }
+        # format.json { render :show, status: :created, location: @message }
+        ActionCable.server.broadcast "room_channel_#{@conversation.id}",
+        content:  @message.content,
+        user_id: current_user.id,
+        conversation_id: @conversation.id
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @message.errors, status: :unprocessable_entity }
+    #   end
     end
   end
 

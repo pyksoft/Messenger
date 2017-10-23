@@ -1,0 +1,19 @@
+<% if message.sender == current_user %>
+<div class="message d-flex flex-row justify-content-start align-items-stretch">
+  <div class="message_sender p-2">
+    <p><%= message.sender.profile.name %></p>
+  </div>
+  <div class="message_content message_by_current_user p-2">
+    <p><%= simple_format(parse_emoji(message.content)) %></p>
+  </div>
+</div>
+<% else %>
+<div class="message d-flex flex-row justify-content-end align-items-stretch">
+  <div class="message_content p-2">
+    <p><%= simple_format(parse_emoji(message.content)) %></p>
+  </div>
+  <div class="message_sender p-2">
+    <p><%= message.sender.profile.name %></p>
+  </div>
+</div>
+<% end %>

@@ -42,6 +42,9 @@ gem 'bootstrap', '~> 4.0.0.beta2'
 # Emoji
 gem 'gemoji'
 
+# JQuery
+gem 'jquery-rails'
+
 group :development, :test do
   # Rspec
   gem 'rspec-rails', '~> 3.6'
