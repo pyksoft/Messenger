@@ -1,24 +1,15 @@
-# README
+# Whomsapp Messenger
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Models
+### User (Devise)
+- email
+- password
 
-Things you may want to cover:
+### Conversation
+- user1:references (User)
+- user2:references (User)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Message
+- conversation:references (Conversation)
+- sender:references (User)
+- content:text
